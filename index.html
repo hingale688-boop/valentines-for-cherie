@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Cherie ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.18);
+      padding: 40px;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      max-width: 520px;
+      animation: fadeIn 1.5s ease-in-out;
+      position: relative;
+      z-index: 2;
+    }
+    h1 { font-size: 2.6rem; margin-bottom: 10px; }
+    p { font-size: 1.2rem; margin-bottom: 25px; }
+    h2 { margin-top: 10px; }
+    button {
+      background: #fff;
+      color: #ff4d6d;
+      border: none;
+      padding: 12px 26px;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    button:hover { transform: scale(1.08); background: #ffe6eb; }
+    #yesMsg {
+      display: none;
+      font-size: 1.4rem;
+      margin-top: 20px;
+      animation: pop 0.6s ease forwards;
+    }
+    .teddy {
+      width: 90px;
+      position: absolute;
+      animation: float 6s ease-in-out infinite;
+    }
+    .teddy.left { left: -20px; bottom: -10px; }
+    .teddy.right { right: -20px; top: -10px; animation-delay: 2s; }
+    .heart {
+      position: absolute;
+      color: #ffdde1;
+      font-size: 20px;
+      animation: fall 4s linear infinite;
+      opacity: 0.8;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pop { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+    @keyframes fall { from { top: -10%; } to { top: 110%; } }
+  </style>
+</head>
+<body>
+
+  <!-- Romantic background music -->
+  <audio id="bgMusic" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" class="teddy left" alt="teddy" />
+    <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" class="teddy right" alt="teddy" />
+
+    <h1>Hey Cherie ❤️</h1>
+    <p>
+      From silly laughs to sweet moments,
+      you somehow make everything feel better.
+      <br/><br/>
+      And I was wondering...
+    </p>
+
+    <h2>Will you be my Valentine? 💕</h2>
+
+    <div>
+      <button onclick="sayYes()">Yes 💖</button>
+      <button onclick="moveNo(this)">No 🙈</button>
+    </div>
+
+    <div id="yesMsg">
+      💥 YAYYY!!! 💥<br/><br/>
+      Cherie ❤️<br/>
+      You just officially became<br/>
+      <strong>Hash’s Valentine 🥰</strong><br/><br/>
+      🌹 <strong>Your Date Surprise</strong> 🌹<br/>
+      📍 A cozy place, just us<br/>
+      🗓️ This Valentine’s Day<br/>
+      ⏰ Endless smiles guaranteed<br/><br/>
+      <em>Now take a screenshot & send it to me 😌💌</em>
+    </div>
+  </div>
+
+  <script>
+    function sayYes() {
+      document.getElementById('yesMsg').style.display = 'block';
+      const music = document.getElementById('bgMusic');
+      music.play();
+      startHearts();
+    }
+
+    function moveNo(btn) {
+      btn.style.position = 'absolute';
+      btn.style.left = Math.random() * 80 + 'vw';
+      btn.style.top = Math.random() * 80 + 'vh';
+    }
+
+    function startHearts() {
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+      }
+    }
+  </script>
+</body>
+</html>
